@@ -1,2 +1,5 @@
 .ipynb_checkpoints
 replays
+ai_replays
+replays.zip
+**/*.log
