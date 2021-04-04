@@ -29,12 +29,14 @@ As an immediate result of this research project, contributions may be made to th
 
 Furthermore, we have community tools for parsing such replays readily available such as [sc2reader](https://pypi.org/project/sc2reader/), [spawningtool](https://pypi.org/project/spawningtool/), and [Zephyrus Replay Parser](https://github.com/ZephyrBlu/zephyrus-sc2-parser). Each extracts information at different level of detail. I have preliminarily picked *spawningtool* for the broad sketch of what actions are taken by players within a match as demonstrated in the Short Demo section below.
 
+Initially, the exploration done in this study will focus on matches among professional players who are in the top 1% of the ranked ladder. In this population, build order mistakes would be rare and can serve as a low-noise environment to test candidate models before widening to a broader set of replays.
+
 2001 replays are extracted since the last major balance patch (where unit strengths and building costs are adjusted - therefore also potentially drastically changing strategies employed). From:
 > https://lotv.spawningtool.com/zip/?pro_only=on&patch=150&query=&order_by=play&coop=n&after_played_on=8%2F14%2F20&before_played_on=3%2F14%2F21&before_time=15&after_time=&p=1.
 
 This will form the set of data for exploration in my project.
 
-The same dataset can be extracted by running the bash script `./dl.sh` to queue a download of 80 zip folders of 25 replays each (2000 replays total).
+The same dataset can be extracted by running the bash script `./dl.sh` to queue a download of 80 zip folders (2001 replays extracted).
 
 ### Sanitization
 
@@ -44,4 +46,6 @@ The sanitized dataset is currently hosted publically at: [GDriveLink](https://dr
 
 ## LIMITATIONS
 
-This study does not take into consideration the map that the game was played on nor the starting locations of the players. The slight asymmetry between starting locations and map layout may influence unit movement and position of buildings but should not influence the build order.
+This study does not take into consideration the map that the game was played on nor the starting locations of the players. The slight asymmetry between starting locations and map layout may influence unit movement and position of buildings but should not influence the build order, granted that different build orders may be utilized based on the different maps. However, including map information into our classification may result in it weighted too heavily if it were the case.
+
+Furthermore, the replays are played by professional players which reduces the rate of mechanical mistakes (cannot execute build order correctly due to unfamilarity with unit management, game interface, time management etc.). In a wider population of replays, additional noise will be introduced and the timings for when certain structures and units are produced will have increased variance.
