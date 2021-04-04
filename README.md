@@ -38,6 +38,10 @@ The same dataset can be extracted by running the bash script `./dl.sh` to queue 
 
 ### Sanitization
 
-19 of the replays are matches played against AI players rather than among human players, furthermore, there is 1 replay with only a single player practicing a build order (likely against Zerg). These replays are omitted from training but may be prototypical cases of noiseless build order executions (which we can use to verify our classification). Thus, a total of 1981 games are utilized for this study. Further sanitization was done on the filenames of these replays to conform to the unique format `{matchup}_{timestamp}_{playerOneUID-playerTwoUID}.SC2Replay` where matchups are amongst the 9 possible combinations of the 3 races `{P, T, Z}`.
+19 of the replays are matches played against AI players rather than among human players, furthermore, there is 1 replay with only a single player practicing a build order (likely against Zerg). These replays are omitted from training but may be prototypical cases of noiseless build order executions (which we can use to verify our classification). Lastly, 2 replays uploaded had differing filenames but contains the same game information (detected via sanitizing the filenames). Thus, a total of **1979** games are utilized for this study. Sanitization was done on the filenames of these replays to conform to the unique format `{matchup}_{timestamp}_{playerOneUID-playerTwoUID}.SC2Replay` where matchups are amongst the 9 possible combinations of the 3 races `{P, T, Z}`. The timestamp and player UID pairs alone should uniquely fingerprint all games. The matchup is to help with classifying either by matchup or by race alone.
 
 The sanitized dataset is currently hosted publically at: [GDriveLink](https://drive.google.com/file/d/1x9dl1W6j4HRwdGaar-KQnLNYN8OHt7ct/view?usp=sharing) with plans to find it a more suitable home once this project is in better shape.
+
+## LIMITATIONS
+
+This study does not take into consideration the map that the game was played on nor the starting locations of the players. The slight asymmetry between starting locations and map layout may influence unit movement and position of buildings but should not influence the build order.
