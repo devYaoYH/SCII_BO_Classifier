@@ -1,5 +1,8 @@
+**/__pycache__
 .ipynb_checkpoints
+icons
 replays
 ai_replays
+misc
 **/*.zip
 **/*.log
