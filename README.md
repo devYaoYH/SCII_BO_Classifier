@@ -4,7 +4,8 @@
 
 - [Proposal](/Proposal.md)
 - [Data Visualization](/Dataset%20Visualization.ipynb)
-    - sc2reader parsing helper functions adapted from [IBM/starcraft2-replay-analysis](https://github.com/IBM/starcraft2-replay-analysis) under Apache 2.0 License.
+    - [spawningtool extracted data](https://github.com/StoicLoofah/spawningtool/wiki/Diving-into-the-Data): Discrete action list of units, structures, and upgrades produced. Unfortunately does not make available game-level resource information such as minerals available or supply utilization.
+    - sc2reader parsing helper functions adapted from [IBM/starcraft2-replay-analysis](https://github.com/IBM/starcraft2-replay-analysis) under Apache 2.0 License. sc2reader helps us with the extraction of resource information. In particular, we are interested in the distribution of resources across the 3 classes \{economy, army, technology\} as the game progresses.
 - [Feature Extraction](/Feature%20Extraction.ipynb)
 
 ## Purpose
