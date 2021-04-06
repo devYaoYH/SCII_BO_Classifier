@@ -3,6 +3,11 @@
 ## Contents
 
 - [Proposal](/Proposal.md)
+    - AlphaStar plays really well (executes actions close to flawlessly), however, the type of strategies it employs are limited and does not adapt to opponent moves especially in the late game.
+    - Informed MCTS is an interesting strategy to enable exploitation of possible enemy action distribution.
+    - However, we first require some prediction of enemy actions. Here, Bayesian classification and multivariate regression can help.
+    - First cluster buildorder sequences to inform priors.
+    - Next feed information from clustering into regression for next possible step taken.
 - [Data Visualization](/Dataset%20Visualization.ipynb)
     - [spawningtool extracted data](https://github.com/StoicLoofah/spawningtool/wiki/Diving-into-the-Data): Discrete action list of units, structures, and upgrades produced. Unfortunately does not make available game-level resource information such as minerals available or supply utilization.
     - sc2reader parsing helper functions adapted from [IBM/starcraft2-replay-analysis](https://github.com/IBM/starcraft2-replay-analysis) under Apache 2.0 License. sc2reader helps us with the extraction of resource information. In particular, we are interested in the distribution of resources across the 3 classes \{economy, army, technology\} as the game progresses.
