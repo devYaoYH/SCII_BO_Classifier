@@ -4,6 +4,7 @@
 
 - [Proposal](/Proposal.md)
 - [Data Visualization](/Dataset%20Visualization.ipynb)
+    - sc2reader parsing helper functions adapted from [IBM/starcraft2-replay-analysis](https://github.com/IBM/starcraft2-replay-analysis) under Apache 2.0 License.
 - [Feature Extraction](/Feature%20Extraction.ipynb)
 
 ## Purpose
