@@ -1,46 +1,27 @@
 import sc2reader
-from sc2reader.events import PlayerStatsEvent, UnitBornEvent, UnitDiedEvent, UnitDoneEvent, UnitTypeChangeEvent, UpgradeCompleteEvent
-
-# Adapted from: https://github.com/IBM/starcraft2-replay-analysis/blob/master/notebooks/starcraft2_replay_analysis.ipynb
-
-# Establish some unit and building groups
-
-VESPENE_UNITS = ["Assimilator", "Extractor", "Refinery"]
-
-SUPPLY_UNITS = ["Overlord", "Overseer", "Pylon", "SupplyDepot"]
-
-WORKER_UNITS = ["Drone", "Probe", "SCV", "MULE"]
-
-BASE_UNITS = ["CommandCenter", "Nexus", "Hatchery", "Lair", "Hive", "PlanetaryFortress", "OrbitalCommand"]
-
-GROUND_UNITS = ["Barracks", "Factory", "GhostAcademy", "Armory", "RoboticsBay", "RoboticsFacility", "TemplarArchive",
-                "DarkShrine", "WarpGate", "SpawningPool", "RoachWarren", "HydraliskDen", "BanelingNest", "UltraliskCavern",
-                "LurkerDen", "InfestationPit",
-                "Gateway"] # Additions
-
-AIR_UNITS = ["Starport", "FusionCore", "RoboticsFacility", "Stargate", "FleetBeacon", "Spire", "GreaterSpire"]
-
-TECH_UNITS = ["EngineeringBay", "Armory", "GhostAcademy", "TechLab", "FusionCore", "Forge", "CyberneticsCore",
-              "TwilightCouncil", "RoboticsFacility", "RoboticsBay", "FleetBeacon", "TemplarArchive", "DarkShrine",
-              "SpawningPool", "RoachWarren", "HydraliskDen", "BanelingNest", "UltraliskCavern", "LurkerDen", "Spire",
-              "GreaterSpire", "EvolutionChamber", "InfestationPit",
-              "BarracksReactor", "BarracksTechLab", "FactoryReactor", "FactoryTechLab", "StarportReactor", "StarportTechLab", # Additional building-specific addons
-              "Reactor"] # Missing addon
-
-STATIC_UNITS = ["NydusWorm", "NydusNetwork", "MissileTurret", "SpineCrawler", "SporeCrawler", "PhotonCannon", "Bunker", "SensorTower", "ShieldBattery"] # Additional static defences
-
-ARMY_UNITS = ["Marine", "Colossus", "InfestorTerran", "Baneling", "Mothership", "MothershipCore", "Changeling", "SiegeTank", "Viking", "Reaper",
-              "Ghost", "Marauder", "Thor", "Hellion", "Hellbat", "Cyclone", "Liberator", "Medivac", "Banshee", "Raven", "Battlecruiser", "Nuke", "Zealot",
-              "Stalker", "HighTemplar", "Disruptor", "DarkTemplar", "Sentry", "Phoenix", "Carrier", "Oracle", "VoidRay", "Tempest", "WarpPrism", "Observer",
-              "Immortal", "Adept", "Zergling", "Overlord", "Hydralisk", "Mutalisk", "Ultralisk", "Roach", "Infestor", "Corruptor",
-              "BroodLord", "Queen", "Overseer", "Archon", "Broodling", "InfestedTerran", "Ravager", "Viper", "SwarmHost",
-              "WidowMine", "Lurker"] # Additional lotv units
-
-ARMY_AIR = ["Mothership", "MothershipCore", "Viking", "Liberator", "Medivac", "Banshee", "Raven", "Battlecruiser",
-            "Viper", "Mutalisk", "Phoenix", "Oracle", "Carrier", "VoidRay", "Tempest", "Observer", "WarpPrism", "BroodLord",
-            "Corruptor", "Observer", "Overseer"]
-
-ARMY_GROUND = [k for k in ARMY_UNITS if k not in ARMY_AIR]
+from sc2reader.events import (
+    PlayerStatsEvent,
+    UnitBornEvent,
+    UnitDiedEvent,
+    UnitDoneEvent,
+    UnitTypeChangeEvent,
+    UpgradeCompleteEvent,
+)
+from lotv_constants import (
+    VESPENE_UNITS,
+    SUPPLY_UNITS,
+    WORKER_UNITS,
+    BASE_UNITS,
+    GROUND_UNITS,
+    AIR_UNITS,
+    TECH_UNITS,
+    STATIC_UNITS,
+    ARMY_UNITS,
+    ARMY_AIR,
+    ARMY_GROUND,
+    MAP_SPEED,
+)
+from collections import defaultdict
 
 # Establish our event parsers
 
@@ -121,8 +102,12 @@ def handle_vespene_events(caller, event):
         caller.players[event.pid]["vespene_value_current_economic"].append((event.frame, event.vespene_used_current_economy))
         caller.players[event.pid]["vespene_queued"].append((event.frame, event.vespene_used_in_progress))
         caller.players[event.pid]["vespene_queued_technology"].append((event.frame, event.vespene_used_in_progress_technology))
-        caller.players[event.pid]["vespene_queued_army"].append((event.frame, event.vespene_used_in_progress_technology))
+        caller.players[event.pid]["vespene_queued_army"].append((event.frame, event.vespene_used_in_progress_army)) # BUG!!
         caller.players[event.pid]["vespene_queued_economic"].append((event.frame, event.vespene_used_in_progress_economy))
+        # Additional partitioned current+queued resources
+        caller.players[event.pid]["vespene_total_technology"].append((event.frame, event.vespene_used_current_technology + event.vespene_used_in_progress_technology))
+        caller.players[event.pid]["vespene_total_army"].append((event.frame, event.vespene_used_current_army + event.vespene_used_in_progress_army))
+        caller.players[event.pid]["vespene_total_economic"].append((event.frame, event.vespene_used_current_economy + event.vespene_used_in_progress_economy))
     elif type(event) is UnitDoneEvent:
         unit = str(event.unit).split()[0]
         if unit in VESPENE_UNITS:
@@ -273,9 +258,124 @@ def handle_mineral_events(caller, event):
         caller.players[event.pid]["mineral_queued_technology"].append((event.frame, event.minerals_used_in_progress_technology))
         caller.players[event.pid]["mineral_queued_army"].append((event.frame, event.minerals_used_in_progress_army))
         caller.players[event.pid]["mineral_queued_economic"].append((event.frame, event.minerals_used_in_progress_economy))
+        # Additional partitioned current+queued resources
+        caller.players[event.pid]["mineral_total_technology"].append((event.frame, event.minerals_used_current_technology + event.minerals_used_in_progress_technology))
+        caller.players[event.pid]["mineral_total_army"].append((event.frame, event.minerals_used_current_army + event.minerals_used_in_progress_army))
+        caller.players[event.pid]["mineral_total_economic"].append((event.frame, event.minerals_used_current_economy + event.minerals_used_in_progress_economy))
         
 # Aggregate all of our event parsers for use by our ReplayData class
 
 handlers = [handle_expansion_events, handle_worker_events, handle_supply_events, handle_mineral_events,
             handle_vespene_events, handle_ground_events, handle_air_events, handle_tech_events, handle_upgrade_events,
             handle_unit_events]
+
+# Convenience grouping of stats
+supply_stats = ('supply_available', 'supply_consumed')
+worker_stats = ('workers_active', 'mineral_per_worker_rate')
+ratio_stats = ('supply_utilization', 'worker_supply_ratio')
+resource_stats = ('mineral_collection_rate', 'vespene_collection_rate')
+mineral_stats = ('mineral_value_current_economic', 'mineral_value_current_technology', 'mineral_value_current_army')
+vespene_stats = ('vespene_value_current_economic', 'vespene_value_current_technology', 'vespene_value_current_army')
+spend_stats = ('mineral_spend', 'vespene_spend')
+mineral_queued_stats = ('mineral_queued_economic', 'mineral_queued_technology', 'mineral_queued_army')
+vespene_queued_stats = ('vespene_queued_economic', 'vespene_queued_technology', 'vespene_queued_army')
+mineral_total_stats = ('mineral_total_economic', 'mineral_total_technology', 'mineral_total_army')
+vespene_total_stats = ('vespene_total_economic', 'vespene_total_technology', 'vespene_total_army')
+
+# Alphabetically ordered stats headings
+all_stats = sorted(list(set(supply_stats)|set(worker_stats)|set(ratio_stats)|set(resource_stats)|set(mineral_stats)|set(vespene_stats)|set(spend_stats)| \
+            set(mineral_queued_stats)|set(vespene_queued_stats)|set(mineral_total_stats)|set(vespene_total_stats)))
+
+# Exposed constant to pick out pertinent statistics
+STATS_GROUPS = [supply_stats, worker_stats, ratio_stats, resource_stats, spend_stats, mineral_total_stats, vespene_total_stats]
+
+# To map different langauges into English
+race_fix_mapping = {
+    'П': 'P',
+    'З': 'Z',
+    'Т': 'T',
+    '星': 'P',
+    '神': 'P',
+    '人': 'T',
+    '异': 'Z',
+    '蟲': 'Z',
+    '프': 'P',
+    '테': 'T',
+    '저': 'Z',
+    'P': 'P',
+    'T': 'T',
+    'Z': 'Z',
+}
+
+# sc2reader Replay Parser Wrapper Class
+class SC2ReplayData(object):
+    __parsers__ = handlers
+    
+    @classmethod
+    def parse_replay(cls, replay=None, replay_file=None):
+        if (replay is not None):
+            replay_data = cls(replay)
+        elif (replay_file is not None):
+            replay = sc2reader.load_replay(replay_file)
+            replay_data = cls(replay)
+        else:
+            print("Error! No valid replay or replay_file given")
+            return None
+        
+        # Parse events in replay with parsers
+        try:
+            # Metadata
+            replay_data.frames = replay.frames
+            for event in replay.events:
+                for parser in cls.__parsers__:
+                    parser(replay_data, event)
+            if replay.winner is not None:
+                replay_data.winners = replay.winner.players
+                replay_data.losers = [p for p in replay.players if p not in replay.winner.players]
+            # Maybe the GAME expansion (version)? e.g. wol/hots/lotv
+            replay_data.expansion = replay.expansion
+            return replay_data
+        except Exception as e:
+            print(e)
+            return None
+        
+    def as_dict(self):
+        return {
+            "replay": self.replay,
+            "expansion": self.expansion,
+            "frames": self.frames,
+            "matchup": 'v'.join(sorted([s.detail_data["race"][0].upper() for s in self.replay.players])),
+            "winners": [(s.pid, s.name, s.detail_data["race"]) for s in self.winners],
+            "losers": [(s.pid, s.name, s.detail_data["race"]) for s in self.losers],
+            "player_names": [str(s) for s in self.replay.players],
+            "stats_names": [k for k in self.players[1].keys()], # Player statistic key labels
+            "stats": {player: data for player, data in self.players.items()}, # Full dictionary
+            "frames_per_second": self.frames_per_second,
+        }
+
+    def as_dataframe(self):
+        import pandas as pd
+        matchup = 'v'.join(sorted([s.detail_data["race"][0].upper() for s in self.replay.players]))
+        return {
+            # Unique hash for this dataline entry which is similar to replay naming convention
+            # Added benefit of pulling out this entry from huge dictionary with replay file information
+            f"{self.replay.unix_timestamp}_{p.detail_data['bnet']['uid']}": \
+                {
+                    "race": p.detail_data["race"][0].upper(), # {P,T,Z}
+                    "matchup": matchup, 
+                    "data": pd.DataFrame ({
+                        # We drop the framenumber for a 1-d array of values per attribute dimension
+                        k: [value for (framenumber,value) in self.players[p.pid][k]] \
+                        for k in all_stats
+                    }, columns=list(all_stats))
+                } \
+            for p in self.replay.players
+        }
+        
+    def __init__(self, replay):
+        self.replay = replay
+        self.players = defaultdict(lambda: defaultdict(list)) # Dictionary: {Dictionary: list}
+        self.winners = []
+        self.losers = []
+        self.frames_per_second = replay.game_fps*MAP_SPEED[replay.speed]
+        self.expansion = None # ??
