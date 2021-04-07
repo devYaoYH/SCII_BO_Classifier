@@ -42,7 +42,7 @@
     }
     ```
     - As the data is quite large, we use python's (>=3.0) in-built compression tool bzip2 to reduce our footprint (to around 10MB from a 350MB replay pack - of course, we also threw away quite some information along the way). Each set of extracted data can be easily extracted and loaded into a python dictionary using the included `zipUtil` functions:
-    ```
+    ```py
     from zipUtil import zip_write, zip_read
     # Write
     dic = {} # some dictionary
