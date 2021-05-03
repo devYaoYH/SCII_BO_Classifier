@@ -277,6 +277,7 @@ resource_stats = ('mineral_collection_rate', 'vespene_collection_rate')
 mineral_stats = ('mineral_value_current_economic', 'mineral_value_current_technology', 'mineral_value_current_army')
 vespene_stats = ('vespene_value_current_economic', 'vespene_value_current_technology', 'vespene_value_current_army')
 spend_stats = ('mineral_spend', 'vespene_spend')
+available_stats = ('minerals_available', 'vespene_available')
 mineral_queued_stats = ('mineral_queued_economic', 'mineral_queued_technology', 'mineral_queued_army')
 vespene_queued_stats = ('vespene_queued_economic', 'vespene_queued_technology', 'vespene_queued_army')
 mineral_total_stats = ('mineral_total_economic', 'mineral_total_technology', 'mineral_total_army')
@@ -284,7 +285,7 @@ vespene_total_stats = ('vespene_total_economic', 'vespene_total_technology', 've
 
 # Alphabetically ordered stats headings
 all_stats = sorted(list(set(supply_stats)|set(worker_stats)|set(ratio_stats)|set(resource_stats)|set(mineral_stats)|set(vespene_stats)|set(spend_stats)| \
-            set(mineral_queued_stats)|set(vespene_queued_stats)|set(mineral_total_stats)|set(vespene_total_stats)))
+            set(available_stats)|set(mineral_queued_stats)|set(vespene_queued_stats)|set(mineral_total_stats)|set(vespene_total_stats)))
 
 # Exposed constant to pick out pertinent statistics
 STATS_GROUPS = [supply_stats, worker_stats, ratio_stats, resource_stats, spend_stats, mineral_total_stats, vespene_total_stats]
