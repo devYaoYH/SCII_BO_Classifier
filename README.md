@@ -65,19 +65,19 @@
 
 Top-1 and Top-3 label classification accuracy is tested and computed on a 70/10/20 train/validation/test split between the selected models.
 
-| [P] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture KDE (exp) |
+| [P] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture | KDE (exp) |
 | --- | --- | --- | --- | --- | --- |
 | Top-1 | 0.412 | 0.399 | 0.399 | 0.421 | 0.420 | 0.454 |
 | Top-3 | 0.626 | 0.586 | 0.604 | 0.587 | 0.621 | 0.690 |
 
 
-| [T] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture KDE (exp) |
+| [T] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture | KDE (exp) |
 | --- | --- | --- | --- | --- | --- |
 | Top-1 | 0.426 | 0.352 | 0.410 | 0.424 | 0.427 | 0.446 |
 | Top-3 | 0.668 | 0.644 | 0.649 | 0.584 | 0.623 | 0.705 |
 
 
-| [Z] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture KDE (exp) |
+| [Z] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture | KDE (exp) |
 | --- | --- | --- | --- | --- | --- |
 | Top-1 | 0.396 | 0.322 | 0.346 | 0.411 | 0.409 | 0.439 |
 | Top-3 | 0.638 | 0.596 | 0.608 | 0.648 | 0.669 | 0.712 |
