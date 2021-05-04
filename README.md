@@ -51,6 +51,16 @@
     read_dic = zip_read('filename')
     ```
 
+- [State-Action Generation](/State-Action%20Generation.ipynb)
+    - The nearest slice of timeseries information is found for each action taken and put into a (state,action) feature-label pair. In addition to the timeseries information (on economic resources), accumulated actions taken thus far is also extracted as a set of discrete features.
+
+- [Naive Bayes + Baselines](/Naive%20Bayes.ipynb)
+    - Baseline: Random Forest Classifier & AdaBoost
+    - Naive Bayes: Condition on continuous, discrete, mixture + KDE likelihood estimation
+    - Gaussian Process Classification: Binary One-vs-Rest -> softmax
+        - Hard to select inducing set, and did not perform above heuristic strategy of picking most frequent actions
+    - [Results](/Results%20Visualization.ipynb) are put into a json and plotted here
+
 ## Purpose
 
 Automate clustering of replays into different types of Build Orders in an **unsupervised** and possibly **online** fashion.
