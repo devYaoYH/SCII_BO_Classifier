@@ -1,0 +1,674 @@
+{
+    "P": {
+        "Coarse": {
+            "baseline": {
+                "RandomForestClassifier(max_depth=2, random_state=0)": {
+                    "Score": [
+                        0.49895843666302947
+                    ],
+                    "Top-3": [
+                        0.8488245213768475
+                    ]
+                },
+                "AdaBoostClassifier(random_state=0)": {
+                    "Score": [
+                        0.45620474159309593
+                    ],
+                    "Top-3": [
+                        0.8589921634758456
+                    ]
+                }
+            },
+            "continuous": {
+                "GaussianNB()": {
+                    "Score": 0.4980656680884833,
+                    "Top-3": 0.6974506497371292
+                },
+                "MultinomialNB()": {
+                    "Score": 0.497817676817776,
+                    "Top-3": 0.838508084515425
+                },
+                "ComplementNB()": {
+                    "Score": 0.4745064973712925,
+                    "Top-3": 0.6274179148893959
+                }
+            },
+            "discrete": {
+                "KDEClassifier()": {
+                    "Score": 0.5010910533624281,
+                    "Top-3": 0.8272168220591153
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.5320372941876612,
+                    "Top-3": 0.8585598095615949
+                },
+                "GaussianNB()": {
+                    "Score": 0.47252256720563435,
+                    "Top-3": 0.6437853387560758
+                },
+                "MultinomialNB()": {
+                    "Score": 0.4765896240452336,
+                    "Top-3": 0.7064775319908739
+                },
+                "ComplementNB()": {
+                    "Score": 0.49047713520484076,
+                    "Top-3": 0.7073207023112786
+                }
+            },
+            "all": {
+                "KDEClassifier()": {
+                    "Score": 0.4848244395953184,
+                    "Top-3": 0.8214639952390399
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.5272763340607023,
+                    "Top-3": 0.8504265026780401
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.48402936216645176,
+                    "Top-3": 0.6597063783354826
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.4901299474258506,
+                    "Top-3": 0.7206626326753298
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.49756968554706876,
+                    "Top-3": 0.7010217240353139
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.4907747247296895,
+                    "Top-3": 0.6921436365439937
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.4847237377244321,
+                    "Top-3": 0.7361372879674636
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4903283404424164,
+                    "Top-3": 0.7662434282313263
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.4732169427636147,
+                    "Top-3": 0.6441821247892074
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.4773831961114969,
+                    "Top-3": 0.706824719769864
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4914195020335284,
+                    "Top-3": 0.7080646761234004
+                },
+                "ComplementNB()": {
+                    "Score": 0.4745064973712925,
+                    "Top-3": 0.6627814700922527
+                },
+                "MultinomialNB()": {
+                    "Score": 0.40992957047911915,
+                    "Top-3": 0.5771252851899613
+                }
+            },
+            "mixture": {}
+        },
+        "Fine": {
+            "baseline": {
+                "RandomForestClassifier(max_depth=2, random_state=0)": {
+                    "Score": [
+                        0.4115167146116457
+                    ],
+                    "Top-3": [
+                        0.6260291637734352
+                    ]
+                },
+                "AdaBoostClassifier(random_state=0)": {
+                    "Score": [
+                        0.25369506993353835
+                    ],
+                    "Top-3": [
+                        0.575339748040869
+                    ]
+                }
+            },
+            "continuous": {
+                "GaussianNB()": {
+                    "Score": 0.07598452534470787,
+                    "Top-3": 0.3694573950996925
+                },
+                "MultinomialNB()": {
+                    "Score": 0.3990675528221407,
+                    "Top-3": 0.6040075389346296
+                },
+                "ComplementNB()": {
+                    "Score": 0.3158416823727805,
+                    "Top-3": 0.45724630493006646
+                }
+            },
+            "discrete": {
+                "KDEClassifier()": {
+                    "Score": 0.43126363816703034,
+                    "Top-3": 0.6538385241023607
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.4540765721087086,
+                    "Top-3": 0.689744098393176
+                },
+                "GaussianNB()": {
+                    "Score": 0.020880864993552226,
+                    "Top-3": 0.20712230929471281
+                },
+                "MultinomialNB()": {
+                    "Score": 0.24799127070727112,
+                    "Top-3": 0.5001983930165658
+                },
+                "ComplementNB()": {
+                    "Score": 0.42054359686539033,
+                    "Top-3": 0.5867473464934034
+                }
+            },
+            "all": {
+                "KDEClassifier()": {
+                    "Score": 0.40527673080737947,
+                    "Top-3": 0.623884149970244
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.4395953183892085,
+                    "Top-3": 0.660979964292799
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.025989485170122013,
+                    "Top-3": 0.24868564626525147
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.19259002083126675,
+                    "Top-3": 0.48154944945937905
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.18976292034520384,
+                    "Top-3": 0.4350758853288364
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.02336077770062494,
+                    "Top-3": 0.24690010911615912
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.409036801904573,
+                    "Top-3": 0.5507886122408491
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4197996230532685,
+                    "Top-3": 0.6210693383592898
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.020880864993552226,
+                    "Top-3": 0.20732070231127864
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.2481896637238369,
+                    "Top-3": 0.4999008034917171
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.41994841781569286,
+                    "Top-3": 0.5815395298085507
+                },
+                "ComplementNB()": {
+                    "Score": 0.3391032635651225,
+                    "Top-3": 0.4966769169725226
+                },
+                "MultinomialNB()": {
+                    "Score": 0.034768376153159405,
+                    "Top-3": 0.07092550342227953
+                }
+            },
+            "mixture": {}
+        }
+    },
+    "T": {
+        "Coarse": {
+            "baseline": {
+                "RandomForestClassifier(max_depth=2, random_state=0)": {
+                    "Score": [
+                        0.5066812439261419
+                    ],
+                    "Top-3": [
+                        0.8830782312925171
+                    ]
+                },
+                "AdaBoostClassifier(random_state=0)": {
+                    "Score": [
+                        0.4603377065111759
+                    ],
+                    "Top-3": [
+                        0.8626093294460642
+                    ]
+                }
+            },
+            "continuous": {
+                "GaussianNB()": {
+                    "Score": 0.40992468415937805,
+                    "Top-3": 0.6655126336248786
+                },
+                "MultinomialNB()": {
+                    "Score": 0.49252915451895046,
+                    "Top-3": 0.8779154518950437
+                },
+                "ComplementNB()": {
+                    "Score": 0.49386540330417883,
+                    "Top-3": 0.6686103012633625
+                }
+            },
+            "discrete": {
+                "KDEClassifier()": {
+                    "Score": 0.5017006802721088,
+                    "Top-3": 0.8493683187560739
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.543974732750243,
+                    "Top-3": 0.8853255587949466
+                },
+                "GaussianNB()": {
+                    "Score": 0.4416302235179786,
+                    "Top-3": 0.6526967930029155
+                },
+                "MultinomialNB()": {
+                    "Score": 0.4823250728862974,
+                    "Top-3": 0.6769314868804664
+                },
+                "ComplementNB()": {
+                    "Score": 0.49690233236151604,
+                    "Top-3": 0.6928449951409135
+                }
+            },
+            "all": {
+                "KDEClassifier()": {
+                    "Score": 0.5034013605442177,
+                    "Top-3": 0.8483965014577259
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.5483479105928085,
+                    "Top-3": 0.879980563654033
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.4463678328474247,
+                    "Top-3": 0.6611394557823129
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.4730928085519922,
+                    "Top-3": 0.6785714285714286
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4665330417881438,
+                    "Top-3": 0.6684280855199223
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.4888848396501458,
+                    "Top-3": 0.6779033041788144
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.49295432458697763,
+                    "Top-3": 0.7072400388726919
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4983600583090379,
+                    "Top-3": 0.748117103984451
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.4446064139941691,
+                    "Top-3": 0.6534256559766763
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.48390427599611274,
+                    "Top-3": 0.6778425655976676
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4982385811467444,
+                    "Top-3": 0.6930272108843537
+                },
+                "ComplementNB()": {
+                    "Score": 0.48760932944606417,
+                    "Top-3": 0.6811831875607386
+                },
+                "MultinomialNB()": {
+                    "Score": 0.11649659863945579,
+                    "Top-3": 0.595055879494655
+                }
+            },
+            "mixture": {}
+        },
+        "Fine": {
+            "baseline": {
+                "RandomForestClassifier(max_depth=2, random_state=0)": {
+                    "Score": [
+                        0.42608114674441205
+                    ],
+                    "Top-3": [
+                        0.6678814382896016
+                    ]
+                },
+                "AdaBoostClassifier(random_state=0)": {
+                    "Score": [
+                        0.42419825072886297
+                    ],
+                    "Top-3": [
+                        0.6519071914480078
+                    ]
+                }
+            },
+            "continuous": {
+                "GaussianNB()": {
+                    "Score": 0.04980563654033042,
+                    "Top-3": 0.22284985422740525
+                },
+                "MultinomialNB()": {
+                    "Score": 0.40992468415937805,
+                    "Top-3": 0.6487487852283771
+                },
+                "ComplementNB()": {
+                    "Score": 0.38411078717201164,
+                    "Top-3": 0.5202259475218659
+                }
+            },
+            "discrete": {
+                "KDEClassifier()": {
+                    "Score": 0.4035471331389699,
+                    "Top-3": 0.6669096209912536
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.446064139941691,
+                    "Top-3": 0.7050534499514092
+                },
+                "GaussianNB()": {
+                    "Score": 0.02520651117589893,
+                    "Top-3": 0.05885568513119534
+                },
+                "MultinomialNB()": {
+                    "Score": 0.17784256559766765,
+                    "Top-3": 0.4074344023323615
+                },
+                "ComplementNB()": {
+                    "Score": 0.423955296404276,
+                    "Top-3": 0.5835762876579204
+                }
+            },
+            "all": {
+                "KDEClassifier()": {
+                    "Score": 0.4098639455782313,
+                    "Top-3": 0.663022351797862
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.44436345966958213,
+                    "Top-3": 0.6919339164237124
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.029154518950437316,
+                    "Top-3": 0.07774538386783285
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.10082604470359573,
+                    "Top-3": 0.4209791059280855
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.15634110787172012,
+                    "Top-3": 0.37931243926141883
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.031462585034013606,
+                    "Top-3": 0.11121234207968902
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.2534013605442177,
+                    "Top-3": 0.521622934888241
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4266885325558795,
+                    "Top-3": 0.623117103984451
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.025267249757045675,
+                    "Top-3": 0.059402332361516035
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.1803935860058309,
+                    "Top-3": 0.41101797862001943
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.42419825072886297,
+                    "Top-3": 0.5843051506316812
+                },
+                "ComplementNB()": {
+                    "Score": 0.391642371234208,
+                    "Top-3": 0.5411200194363459
+                },
+                "MultinomialNB()": {
+                    "Score": 0.028182701652089408,
+                    "Top-3": 0.06717687074829932
+                }
+            },
+            "mixture": {}
+        }
+    },
+    "Z": {
+        "Coarse": {
+            "baseline": {
+                "RandomForestClassifier(max_depth=2, random_state=0)": {
+                    "Score": [
+                        0.5014178765880217
+                    ],
+                    "Top-3": [
+                        0.8588929219600726
+                    ]
+                },
+                "AdaBoostClassifier(random_state=0)": {
+                    "Score": [
+                        0.519850272232305
+                    ],
+                    "Top-3": [
+                        0.8787431941923775
+                    ]
+                }
+            },
+            "continuous": {
+                "GaussianNB()": {
+                    "Score": 0.4952359346642468,
+                    "Top-3": 0.7330421960072595
+                },
+                "MultinomialNB()": {
+                    "Score": 0.4951225045372051,
+                    "Top-3": 0.8496483666061706
+                },
+                "ComplementNB()": {
+                    "Score": 0.4951225045372051,
+                    "Top-3": 0.6871597096188747
+                }
+            },
+            "discrete": {
+                "KDEClassifier()": {
+                    "Score": 0.5130474245518494,
+                    "Top-3": 0.8282278193782618
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.5321080099841162,
+                    "Top-3": 0.8561379623326526
+                },
+                "GaussianNB()": {
+                    "Score": 0.3651315789473684,
+                    "Top-3": 0.7124546279491834
+                },
+                "MultinomialNB()": {
+                    "Score": 0.43818058076225047,
+                    "Top-3": 0.7028130671506352
+                },
+                "ComplementNB()": {
+                    "Score": 0.48877041742286753,
+                    "Top-3": 0.7296960072595281
+                }
+            },
+            "all": {
+                "KDEClassifier()": {
+                    "Score": 0.4824143408214205,
+                    "Top-3": 0.8148400272294077
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.515543453596551,
+                    "Top-3": 0.8459269344225097
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.4724364791288566,
+                    "Top-3": 0.7189201451905626
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.4529832123411978,
+                    "Top-3": 0.7131919237749547
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.49183303085299457,
+                    "Top-3": 0.7189768602540835
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.48616152450090744,
+                    "Top-3": 0.7362749546279492
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.4503743194192377,
+                    "Top-3": 0.7176724137931034
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4896778584392015,
+                    "Top-3": 0.7701338475499092
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.37777903811252267,
+                    "Top-3": 0.7126247731397459
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.43976860254083483,
+                    "Top-3": 0.7037205081669692
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4896778584392015,
+                    "Top-3": 0.7308303085299456
+                },
+                "ComplementNB()": {
+                    "Score": 0.48400635208711434,
+                    "Top-3": 0.7184097096188747
+                },
+                "MultinomialNB()": {
+                    "Score": 0.2753516333938294,
+                    "Top-3": 0.5509868421052632
+                }
+            },
+            "mixture": {}
+        },
+        "Fine": {
+            "baseline": {
+                "RandomForestClassifier(max_depth=2, random_state=0)": {
+                    "Score": [
+                        0.39575771324863884
+                    ],
+                    "Top-3": [
+                        0.6381011796733213
+                    ]
+                },
+                "AdaBoostClassifier(random_state=0)": {
+                    "Score": [
+                        0.14694872958257713
+                    ],
+                    "Top-3": [
+                        0.34647232304900183
+                    ]
+                }
+            },
+            "continuous": {
+                "GaussianNB()": {
+                    "Score": 0.05813294010889292,
+                    "Top-3": 0.37726860254083483
+                },
+                "MultinomialNB()": {
+                    "Score": 0.34613203266787657,
+                    "Top-3": 0.607815335753176
+                },
+                "ComplementNB()": {
+                    "Score": 0.3055807622504537,
+                    "Top-3": 0.49364791288566245
+                }
+            },
+            "discrete": {
+                "KDEClassifier()": {
+                    "Score": 0.42205582028590877,
+                    "Top-3": 0.6848196051735874
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.4388472884048105,
+                    "Top-3": 0.7120490129339687
+                },
+                "GaussianNB()": {
+                    "Score": 0.03584392014519056,
+                    "Top-3": 0.13668330308529947
+                },
+                "MultinomialNB()": {
+                    "Score": 0.19368194192377494,
+                    "Top-3": 0.4544010889292196
+                },
+                "ComplementNB()": {
+                    "Score": 0.4105603448275862,
+                    "Top-3": 0.6481397459165155
+                }
+            },
+            "all": {
+                "KDEClassifier()": {
+                    "Score": 0.3759927388245972,
+                    "Top-3": 0.6367143181302474
+                },
+                "KDEClassifier(kernel='exponential')": {
+                    "Score": 0.403902881778988,
+                    "Top-3": 0.6709779895620603
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.040494555353902,
+                    "Top-3": 0.20547867513611615
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.1588021778584392,
+                    "Top-3": 0.45610254083484575
+                },
+                "MixedNB(clf_con=GaussianNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.2036070780399274,
+                    "Top-3": 0.5094147005444646
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.039927404718693285,
+                    "Top-3": 0.15970961887477314
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.2606057168784029,
+                    "Top-3": 0.507940108892922
+                },
+                "MixedNB(clf_con=MultinomialNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.4092558983666062,
+                    "Top-3": 0.6694078947368421
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=GaussianNB())": {
+                    "Score": 0.036127495462794916,
+                    "Top-3": 0.13685344827586207
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=MultinomialNB())": {
+                    "Score": 0.19663112522686024,
+                    "Top-3": 0.45457123411978223
+                },
+                "MixedNB(clf_con=ComplementNB(), clf_dis=ComplementNB())": {
+                    "Score": 0.41044691470054445,
+                    "Top-3": 0.6477427404718693
+                },
+                "ComplementNB()": {
+                    "Score": 0.36740018148820325,
+                    "Top-3": 0.5610254083484574
+                },
+                "MultinomialNB()": {
+                    "Score": 0.05535390199637023,
+                    "Top-3": 0.1952132486388385
+                }
+            },
+            "mixture": {}
+        }
+    }
+}

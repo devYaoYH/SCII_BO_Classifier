@@ -5,20 +5,27 @@
 # E: for_economy?
 # T: for_tech?
 # D: for_defense? (static defenses only)
-def decode_type(bits):
+def decode_type(bits,suppress=False):
     flags = ['Static Defense','Technology','Economy','Building','Army','Upgrade']
-    for i in range(len(flags)-1,-1,-1):
-        if ((1 << i)&bits):
-            print('1',end='')
-        else:
-            print('0',end='')
-    print('')
-    if (bits == 0b000100):
-        print("\tWorker")
+    if (not suppress):
+        for i in range(len(flags)-1,-1,-1):
+            if ((1 << i)&bits):
+                print('1',end='')
+            else:
+                print('0',end='')
+        print('')
+    types = []
+    if (bits == 0b000100 or bits == 0):
+        if (not suppress):
+            print("\tWorker")
+        types.append('Worker')
     else:
         for i, flag in enumerate(flags):
             if ((1 << i)&bits):
-                print(f"\t{flag}")
+                if (not suppress):
+                    print(f"\t{flag}")
+                types.append(flag)
+    return ','.join(types)
 
 PROTOSS_ACTIONS = {
     'Adept': 0,
