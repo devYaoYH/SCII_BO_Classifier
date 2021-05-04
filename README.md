@@ -63,7 +63,10 @@
 
 ## Results
 
-Top-1 and Top-3 label classification accuracy is tested and computed on a 70/10/20 train/validation/test split between the selected models.
+Top-1 and Top-3 label classification accuracy is tested and computed on a 70/10/20 train/validation/test split between the selected models. Unfortunately, we only average a measly \~10% improvement over the naive heuristic option of picking k-most frequent actions in order.
+
+1) Features are highly correlated, Naive Bayes also doesn't do so well beyond top-1
+2) Dataset may be underdetermined, in the sense that the same (for discrete features) or close feature vectors are labeled differently.
 
 | [P] | Baseline (RF) | Heuristic | Continuous (Multinomial) | Discrete (Complement) | Mixture | **KDE (exp)** |
 | --- | --- | --- | --- | --- | --- | --- |
